@@ -13,6 +13,4 @@ system.add_pipe()
 
 print(system)
 
-print(system.get_node(1))
-print(system.get_pipe(2))
-print(system.get_pipe(4))
+print(system.get_node(1).equivalent_length)
