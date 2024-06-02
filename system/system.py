@@ -18,9 +18,20 @@ class System:
         self.n_pipe += 1
         self.pipes.append(Pipe(self.n_pipe))
 
+    def get_node(self, name):
+        for node in self.nodes:
+            if node.name == name:
+                return node
+        return None
+
+    def get_pipe(self, name):
+        for pipe in self.pipes:
+            if pipe.name == name:
+                return pipe
+        return None
+
     def __str__(self):
-        response = 'System:\n'
-        response += f'Node count: {len(self.nodes)}\n'
+        response = f'System:\n\nNode count: {len(self.nodes)}\n'
 
         for node in self.nodes:
             response += str(node) + '\n'
