@@ -11,10 +11,19 @@ class Node:
         ]
 
     def __str__(self):
-        return f'Node {self.name}: {self.elevation} m, {self.pressure} m.c.a.'
+        return f'Node {self.name}'
+
+    def __repr__(self):
+        return self.__str__()
+
+    def statitics(self):
+        return self.__str__() + f': {self.elevation} m, {self.pressure} m.c.a.'
 
     def connect_pipe(self, pipe, side):
         if side >= self.n_connections:
+            return
+
+        if not pipe.connect_node(self):
             return
 
         if self.pipes[side] is not None:
@@ -23,4 +32,5 @@ class Node:
         self.pipes[side] = pipe
 
     def disconnect_pipe(self, side):
-        pass
+        if self.pipes[side] is not None:
+            self.pipes[side].disconnect_node(self)

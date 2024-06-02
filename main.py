@@ -11,6 +11,12 @@ system.add_pipe()
 system.add_pipe()
 system.add_pipe()
 
-print(system)
+print(system.connections())
 
-print(system.get_node(1).equivalent_length)
+system.get_node(1).connect_pipe(system.get_pipe(1), 0)
+
+print(system.connections())
+
+system.get_node(1).connect_pipe(system.get_pipe(2), 0)
+
+print(system.connections())
