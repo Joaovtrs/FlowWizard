@@ -43,9 +43,9 @@ class System:
 
         return response
 
-    def add_node(self):
+    def add_node(self, n_connections=3):
         self.n_node += 1
-        self.nodes.append(Node(self.n_node))
+        self.nodes.append(Node(self.n_node, n_connections))
 
     def add_pipe(self):
         self.n_pipe += 1
@@ -62,3 +62,21 @@ class System:
             if pipe.name == name:
                 return pipe
         return None
+
+    def verify_connections(self):
+        response = True
+
+        for node in self.nodes:
+            if None in node.pipes:
+                print(f'Connection missing on {node}')
+                response = False
+
+        for pipe in self.pipes:
+            if None in pipe.nodes:
+                print(f'Connection missing on {pipe}')
+                response = False
+
+        if response:
+            print('No connection missing')
+
+        return response
