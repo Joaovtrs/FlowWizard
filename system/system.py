@@ -1,3 +1,5 @@
+import networkx as nx
+
 from .node import Node
 from .pipe import Pipe
 
@@ -80,3 +82,15 @@ class System:
             print('No connection missing')
 
         return response
+
+    def graph(self):
+        g = nx.Graph()
+
+        for node in self.nodes:
+            g.add_node(node.name)
+
+        for pipe in self.pipes:
+            if None not in pipe.nodes:
+                g.add_edge(pipe.nodes[0].name, pipe.nodes[1].name)
+
+        return g
