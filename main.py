@@ -2,7 +2,6 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-from system import System
 from ui import MainUI
 
 # from qt_material import apply_stylesheet
@@ -11,7 +10,7 @@ from ui import MainUI
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
 
-    window = MainUI(System())
+    window = MainUI()
     # apply_stylesheet(qt, theme='dark_blue.xml')
     window.show()
 

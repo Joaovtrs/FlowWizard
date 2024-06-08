@@ -4,7 +4,6 @@ matplotlib.use('Qt5Agg')
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
-
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (QFrame, QLabel, QSizePolicy, QSpacerItem,
@@ -13,6 +12,7 @@ from PySide6.QtWidgets import (QFrame, QLabel, QSizePolicy, QSpacerItem,
 
 class Plot(FigureCanvasQTAgg):
     def __init__(self, parent=None, width=5, height=6, dpi=100):
+        self.parent = parent
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super().__init__(figure=fig)

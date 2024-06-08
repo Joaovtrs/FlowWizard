@@ -1,3 +1,5 @@
+import pickle
+
 import networkx as nx
 
 from .node import Node
@@ -5,6 +7,30 @@ from .pipe import Pipe
 
 
 class System:
+    def __init__(self):
+        self.circuit = Circuit()
+        self.path = None
+
+    def novo(self):
+        self.path = None
+        self.circuit = Circuit()
+
+    def salvar(self):
+        if self.path is not None:
+            with open(self.path, 'wb') as arq:
+                pickle.dump(self.circuit, arq)
+
+    def salvar_como(self, path):
+        self.path = path
+        self.salvar()
+
+    def abrir(self, path):
+        self.path = path
+        with open(path, 'rb') as arq:
+            self.circuit = pickle.load(arq)
+
+
+class Circuit:
     def __init__(self):
         self.nodes = []
         self.pipes = []
@@ -94,3 +120,6 @@ class System:
                 g.add_edge(pipe.nodes[0].name, pipe.nodes[1].name)
 
         return g
+
+
+system = System()
