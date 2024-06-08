@@ -1,5 +1,8 @@
-from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QWidget
-from .plot_ui import PlotUI
+from PySide6.QtWidgets import QHBoxLayout, QMainWindow, QWidget
+
+from .main_menu import MainMenu
+from .main_menu_bar import MainMenuBar
+from .viewer import Viewer
 
 
 class MainUI(QMainWindow):
@@ -10,6 +13,9 @@ class MainUI(QMainWindow):
         self.setWindowTitle('FlowWizard')
         self.setMinimumSize(800, 600)
 
+        self.menu_bar = MainMenuBar(self.atualizar, self)
+        self.setMenuBar(self.menu_bar)
+
         self.system = system
 
         self.main_widget = QWidget(self)
@@ -17,6 +23,11 @@ class MainUI(QMainWindow):
 
         self.main_grid = QHBoxLayout(self.main_widget)
 
-        self.plot_ui = PlotUI(self.main_widget)
+        self.viewer = Viewer(self.atualizar, self.main_widget)
+        self.menu = MainMenu(self.viewer, self.main_widget)
 
-        self.main_grid.addWidget(self.plot_ui)
+        self.main_grid.addWidget(self.menu)
+        self.main_grid.addWidget(self.viewer)
+
+    def atualizar(self):
+        pass
