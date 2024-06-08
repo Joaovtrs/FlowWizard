@@ -1,15 +1,13 @@
-import os
-
-from PySide6.QtWidgets import QFileDialog, QMenuBar, QMessageBox
+from PySide6.QtWidgets import QMenuBar
 
 
 class MainMenuBar(QMenuBar):
-    def __init__(self, func_atualizar, parent=None):
+    def __init__(self, func_update, parent=None):
         super().__init__(parent)
 
-        self.func_atualizar = func_atualizar
+        self.func_update = func_update
 
         self.addMenu('Arquivo')
 
-    def atualizar(self):
+    def update_(self):
         pass

@@ -15,7 +15,7 @@ class MainUI(QMainWindow):
         self.setWindowTitle('FlowWizard')
         self.setMinimumSize(800, 600)
 
-        self.menu_bar = MainMenuBar(self.atualizar, self)
+        self.menu_bar = MainMenuBar(self.update_, self)
         self.setMenuBar(self.menu_bar)
 
         self.main_widget = QWidget(self)
@@ -23,17 +23,18 @@ class MainUI(QMainWindow):
 
         self.main_grid = QHBoxLayout(self.main_widget)
 
-        self.viewer = Viewer(self.atualizar, self.main_widget)
+        self.viewer = Viewer(self.update_, self.main_widget)
         self.menu = MainMenu(self.viewer, self.main_widget)
 
         self.main_grid.addWidget(self.menu)
         self.main_grid.addWidget(self.viewer)
 
-    def atualizar(self):
+    def update_(self):
         if system.path is not None:
-            arq = str(system.caminho).split('/')[-1]
+            arq = str(system.path).split('/')[-1]
             self.setWindowTitle('FlowWizard: ' + str(arq))
         else:
             self.setWindowTitle('FlowWizard')
 
-        self.menu_bar.atualizar()
+        self.menu_bar.update_()
+        self.viewer.update_()

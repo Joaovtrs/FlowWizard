@@ -3,12 +3,12 @@ from PySide6.QtWidgets import QPushButton, QSizePolicy
 
 
 class MainManuButton(QPushButton):
-    def __init__(self, texto, caminho=None, parent=None):
-        super().__init__(texto, parent)
+    def __init__(self, text, path=None, parent=None):
+        super().__init__(text, parent)
 
-        self.caminho = caminho
+        self.path = path
 
-        self.texto = texto
+        self.text = text
         self.setMinimumSize(10, 50)
         self.setMaximumSize(180, 50)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -20,8 +20,8 @@ class MainManuButton(QPushButton):
          }'''
         )
 
-        if self.caminho is not None:
-            icon = QIcon(self.caminho)
+        if self.path is not None:
+            icon = QIcon(self.path)
             self.setIcon(icon)
 
     def btn_resize(self):
@@ -30,4 +30,4 @@ class MainManuButton(QPushButton):
             if self.width() < 150:
                 self.setText('')
             else:
-                self.setText(self.texto)
+                self.setText(self.text)

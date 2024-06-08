@@ -1,29 +1,29 @@
 from PySide6.QtWidgets import QSizePolicy, QStackedWidget
 
-from .view_conexoes import ViewConexoes
-from .view_trechos import ViewTrechos
-from .viwer_grafo import ViwerGrafo
+from .view_nodes import ViewNodes
+from .view_pipes import ViewPipes
+from .viwer_grafo import ViwerGraph
 
 
 class Viewer(QStackedWidget):
-    def __init__(self, func_atualizar, parent=None):
+    def __init__(self, func_update, parent=None):
         super().__init__(parent)
 
-        self.func_atualizar = func_atualizar
+        self.func_update = func_update
 
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        self.view_conexoes = ViewConexoes(self.func_atualizar, self)
-        self.view_trechos = ViewTrechos(self.func_atualizar, self)
-        self.view_grafo = ViwerGrafo(self.func_atualizar, self)
+        self.view_nodes = ViewNodes(self.func_update, self)
+        self.view_pipes = ViewPipes(self.func_update, self)
+        self.view_graph = ViwerGraph(self.func_update, self)
 
-        self.addWidget(self.view_conexoes)
-        self.addWidget(self.view_trechos)
-        self.addWidget(self.view_grafo)
+        self.addWidget(self.view_nodes)
+        self.addWidget(self.view_pipes)
+        self.addWidget(self.view_graph)
 
-        self.currentChanged.connect(lambda *args: self.func_atualizar())
+        self.currentChanged.connect(lambda *args: self.func_update())
 
-    def atualizar(self):
-        self.view_conexoes.atualizar()
-        self.view_trechos.atualizar()
-        self.view_grafo.atualizar()
+    def update_(self):
+        self.view_nodes.update_()
+        self.view_pipes.update_()
+        self.view_graph.update_()

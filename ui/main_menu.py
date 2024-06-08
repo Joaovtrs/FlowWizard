@@ -20,20 +20,20 @@ class MainMenu(QFrame):
 
         self.btn_menu = MainManuButton(' Menu', 'icons/menu.png', self)
 
-        self.separador = QFrame(self)
-        self.separador.setFrameShape(QFrame.HLine)
+        self.separator = QFrame(self)
+        self.separator.setFrameShape(QFrame.HLine)
 
-        self.btn_conexoes = MainManuButton(
+        self.btn_nodes = MainManuButton(
             ' Conexões',
             'icons/menu-dots.png',
             self
         )
-        self.btn_trechos = MainManuButton(
+        self.btn_pipes = MainManuButton(
             ' Trechos',
             'icons/algorithm.png',
             self
         )
-        self.btn_grafo = MainManuButton(
+        self.btn_graph = MainManuButton(
             ' Grafo',
             'icons/connection.png',
             self
@@ -45,21 +45,21 @@ class MainMenu(QFrame):
         )
 
         self.grid.addWidget(self.btn_menu)
-        self.grid.addWidget(self.separador)
-        self.grid.addWidget(self.btn_conexoes)
-        self.grid.addWidget(self.btn_trechos)
-        self.grid.addWidget(self.btn_grafo)
+        self.grid.addWidget(self.separator)
+        self.grid.addWidget(self.btn_nodes)
+        self.grid.addWidget(self.btn_pipes)
+        self.grid.addWidget(self.btn_graph)
         self.grid.addItem(self.spacer)
 
         self.btn_menu.clicked.connect(self.func_btn_menu)
-        self.btn_conexoes.clicked.connect(
-            lambda: self.viewer.setCurrentWidget(self.viewer.view_conexoes)
+        self.btn_nodes.clicked.connect(
+            lambda: self.viewer.setCurrentWidget(self.viewer.view_nodes)
         )
-        self.btn_trechos.clicked.connect(
-            lambda: self.viewer.setCurrentWidget(self.viewer.view_trechos)
+        self.btn_pipes.clicked.connect(
+            lambda: self.viewer.setCurrentWidget(self.viewer.view_pipes)
         )
-        self.btn_grafo.clicked.connect(
-            lambda: self.viewer.setCurrentWidget(self.viewer.view_grafo)
+        self.btn_graph.clicked.connect(
+            lambda: self.viewer.setCurrentWidget(self.viewer.view_graph)
         )
 
     def func_btn_menu(self):
