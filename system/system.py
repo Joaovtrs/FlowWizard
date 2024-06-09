@@ -11,20 +11,20 @@ class System:
         self.circuit = Circuit()
         self.path = None
 
-    def novo(self):
+    def new(self):
         self.path = None
         self.circuit = Circuit()
 
-    def salvar(self):
+    def save(self):
         if self.path is not None:
             with open(self.path, 'wb') as arq:
                 pickle.dump(self.circuit, arq)
 
-    def salvar_como(self, path):
+    def save_as(self, path):
         self.path = path
-        self.salvar()
+        self.save()
 
-    def abrir(self, path):
+    def open(self, path):
         self.path = path
         with open(path, 'rb') as arq:
             self.circuit = pickle.load(arq)
