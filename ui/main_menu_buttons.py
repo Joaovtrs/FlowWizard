@@ -28,6 +28,6 @@ class MainManuButton(QPushButton):
 
         if not self.icon().isNull():
             if self.width() < 150:
-                self.setText("")
+                self.setText('')
             else:
                 self.setText(self.text)

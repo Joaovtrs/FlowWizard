@@ -16,13 +16,13 @@ qt-material = "^2.14"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"
-black = "^24.8.0"
 taskipy = "^1.13.0"
+blue = "^0.9.1"
 
 
 [tool.taskipy.tasks]
 # lint = ''
-format = 'isort . && black .'
+format = 'isort . && blue .'
 run = 'python .\main.py'
 # pre_test = 'task lint'
 # test = 'pytest -s -x --cov=pynapse -vv'

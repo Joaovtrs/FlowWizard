@@ -1,6 +1,12 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QFrame, QLabel, QSizePolicy, QSpacerItem, QVBoxLayout
+from PySide6.QtWidgets import (
+    QFrame,
+    QLabel,
+    QSizePolicy,
+    QSpacerItem,
+    QVBoxLayout,
+)
 
 
 class ViewPipes(QFrame):
@@ -13,14 +19,16 @@ class ViewPipes(QFrame):
 
         self.grid = QVBoxLayout(self)
 
-        self.lbl_title = QLabel("Trechos")
+        self.lbl_title = QLabel('Trechos')
         self.lbl_title.setAlignment(Qt.AlignHCenter)
-        self.lbl_title.setFont(QFont("Times", 20))
+        self.lbl_title.setFont(QFont('Times', 20))
 
         self.separator_title = QFrame(self)
         self.separator_title.setFrameShape(QFrame.HLine)
 
-        self.spacer = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.spacer = QSpacerItem(
+            10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
 
         self.grid.addWidget(self.lbl_title)
         self.grid.addWidget(self.separator_title)

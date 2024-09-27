@@ -13,13 +13,13 @@ class Pipe:
         self.nodes = [None, None]
 
     def __str__(self):
-        return f"Pipe {self.name}"
+        return f'Pipe {self.name}'
 
     def __repr__(self):
         return self.__str__()
 
     def statitics(self):
-        return self.__str__() + f": {self.flow} l/s"
+        return self.__str__() + f': {self.flow} l/s'
 
     def connect_node(self, node):
         if None in self.nodes:

@@ -12,7 +12,7 @@ class MainUI(QMainWindow):
         super().__init__(parent)
 
         self.resize(800, 600)
-        self.setWindowTitle("FlowWizard")
+        self.setWindowTitle('FlowWizard')
         self.setMinimumSize(800, 600)
 
         self.menu_bar = MainMenuBar(self.update_, self)
@@ -31,10 +31,10 @@ class MainUI(QMainWindow):
 
     def update_(self):
         if system.path is not None:
-            arq = str(system.path).split("/")[-1]
-            self.setWindowTitle("FlowWizard: " + str(arq))
+            arq = str(system.path).split('/')[-1]
+            self.setWindowTitle('FlowWizard: ' + str(arq))
         else:
-            self.setWindowTitle("FlowWizard")
+            self.setWindowTitle('FlowWizard')
 
         self.menu_bar.update_()
         self.viewer.update_()

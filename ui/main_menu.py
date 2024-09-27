@@ -18,16 +18,22 @@ class MainMenu(QFrame):
 
         self.grid = QVBoxLayout(self)
 
-        self.btn_menu = MainManuButton(" Menu", "icons/menu.png", self)
+        self.btn_menu = MainManuButton(' Menu', 'icons/menu.png', self)
 
         self.separator = QFrame(self)
         self.separator.setFrameShape(QFrame.HLine)
 
-        self.btn_nodes = MainManuButton(" Conexões", "icons/menu-dots.png", self)
-        self.btn_pipes = MainManuButton(" Trechos", "icons/algorithm.png", self)
-        self.btn_graph = MainManuButton(" Grafo", "icons/connection.png", self)
+        self.btn_nodes = MainManuButton(
+            ' Conexões', 'icons/menu-dots.png', self
+        )
+        self.btn_pipes = MainManuButton(
+            ' Trechos', 'icons/algorithm.png', self
+        )
+        self.btn_graph = MainManuButton(' Grafo', 'icons/connection.png', self)
 
-        self.spacer = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.spacer = QSpacerItem(
+            10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
 
         self.grid.addWidget(self.btn_menu)
         self.grid.addWidget(self.separator)
@@ -49,8 +55,8 @@ class MainMenu(QFrame):
 
     def func_btn_menu(self):
 
-        anim_max = QPropertyAnimation(self, b"maximumWidth", self)
-        anim_min = QPropertyAnimation(self, b"minimumWidth", self)
+        anim_max = QPropertyAnimation(self, b'maximumWidth', self)
+        anim_min = QPropertyAnimation(self, b'minimumWidth', self)
         anim_max.setDuration(100)
         anim_min.setDuration(100)
 
