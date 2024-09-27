@@ -15,9 +15,9 @@ class MainManuButton(QPushButton):
         self.resizeEvent = lambda args: self.btn_resize()
 
         self.setStyleSheet(
-            '''QPushButton:disabled {
+            """QPushButton:disabled {
          border: 1px solid #aa0000;
-         }'''
+         }"""
         )
 
         if self.path is not None:
@@ -28,6 +28,6 @@ class MainManuButton(QPushButton):
 
         if not self.icon().isNull():
             if self.width() < 150:
-                self.setText('')
+                self.setText("")
             else:
                 self.setText(self.text)

@@ -7,7 +7,7 @@ from ui import MainUI
 # from qt_material import apply_stylesheet
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     qt = QApplication(sys.argv)
 
     window = MainUI()

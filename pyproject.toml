@@ -6,7 +6,7 @@ authors = ["João <oliveira.joaovtr@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "<3.13,>=3.12"
+python = "3.12.*"
 networkx = "^3.3"
 numpy = "^1.26.4"
 matplotlib = "^3.9.0"
@@ -16,6 +16,17 @@ qt-material = "^2.14"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"
+black = "^24.8.0"
+taskipy = "^1.13.0"
+
+
+[tool.taskipy.tasks]
+# lint = ''
+format = 'isort . && black .'
+run = 'python .\main.py'
+# pre_test = 'task lint'
+# test = 'pytest -s -x --cov=pynapse -vv'
+# post_test = 'coverage html'
 
 [build-system]
 requires = ["poetry-core"]

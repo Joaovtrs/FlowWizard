@@ -17,7 +17,7 @@ class System:
 
     def save(self):
         if self.path is not None:
-            with open(self.path, 'wb') as arq:
+            with open(self.path, "wb") as arq:
                 pickle.dump(self.circuit, arq)
 
     def save_as(self, path):
@@ -26,7 +26,7 @@ class System:
 
     def open(self, path):
         self.path = path
-        with open(path, 'rb') as arq:
+        with open(path, "rb") as arq:
             self.circuit = pickle.load(arq)
 
 
@@ -39,17 +39,17 @@ class Circuit:
         self.n_pipe = 0
 
     def __str__(self):
-        response = f'System:\n\nNode count: {len(self.nodes)}\n'
+        response = f"System:\n\nNode count: {len(self.nodes)}\n"
 
         for node in self.nodes:
-            response += node.statitics() + '\n'
+            response += node.statitics() + "\n"
 
-        response += '\n'
+        response += "\n"
 
-        response += f'Pipe count: {len(self.pipes)}\n'
+        response += f"Pipe count: {len(self.pipes)}\n"
 
         for pipe in self.pipes:
-            response += pipe.statitics() + '\n'
+            response += pipe.statitics() + "\n"
 
         return response
 
@@ -57,17 +57,17 @@ class Circuit:
         return self.__str__()
 
     def connections(self):
-        response = f'System:\n\nNode count: {len(self.nodes)}\n'
+        response = f"System:\n\nNode count: {len(self.nodes)}\n"
 
         for node in self.nodes:
-            response += str(node) + ': ' + str(node.pipes) + '\n'
+            response += str(node) + ": " + str(node.pipes) + "\n"
 
-        response += '\n'
+        response += "\n"
 
-        response += f'Pipe count: {len(self.pipes)}\n'
+        response += f"Pipe count: {len(self.pipes)}\n"
 
         for pipe in self.pipes:
-            response += str(pipe) + ': ' + str(pipe.nodes) + '\n'
+            response += str(pipe) + ": " + str(pipe.nodes) + "\n"
 
         return response
 
@@ -96,16 +96,16 @@ class Circuit:
 
         for node in self.nodes:
             if None in node.pipes:
-                print(f'Connection missing on {node}')
+                print(f"Connection missing on {node}")
                 response = False
 
         for pipe in self.pipes:
             if None in pipe.nodes:
-                print(f'Connection missing on {pipe}')
+                print(f"Connection missing on {pipe}")
                 response = False
 
         if response:
-            print('No connection missing')
+            print("No connection missing")
 
         return response
 

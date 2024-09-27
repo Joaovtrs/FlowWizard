@@ -6,18 +6,17 @@ class Node:
         self.n_connections = n_connections
         self.pipes = [None for _ in range(n_connections)]
         self.equivalent_length = [
-            [0 for _ in range(n_connections)]
-            for _ in range(n_connections)
+            [0 for _ in range(n_connections)] for _ in range(n_connections)
         ]
 
     def __str__(self):
-        return f'Node {self.name}'
+        return f"Node {self.name}"
 
     def __repr__(self):
         return self.__str__()
 
     def statitics(self):
-        return self.__str__() + f': {self.elevation} m, {self.pressure} m.c.a.'
+        return self.__str__() + f": {self.elevation} m, {self.pressure} m.c.a."
 
     def connect_pipe(self, pipe, side):
         if side >= self.n_connections:
