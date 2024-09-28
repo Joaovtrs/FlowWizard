@@ -1,4 +1,7 @@
 import matplotlib
+import networkx as nx
+
+from system import system
 
 matplotlib.use('Qt5Agg')
 
@@ -21,6 +24,11 @@ class Plot(FigureCanvasQTAgg):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super().__init__(figure=fig)
+        graph = system.circuit.graph()
+        if nx.is_planar(graph):
+            nx.draw_planar(system.circuit.graph(), ax=self.axes)
+        else:
+            nx.draw(system.circuit.graph(), ax=self.axes)
 
 
 class ViwerGraph(QFrame):

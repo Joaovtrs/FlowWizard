@@ -23,10 +23,12 @@ blue = "^0.9.1"
 [tool.taskipy.tasks]
 # lint = ''
 format = 'isort . && blue .'
+pre_run = 'task format'
 run = 'python .\main.py'
 # pre_test = 'task lint'
 # test = 'pytest -s -x --cov=pynapse -vv'
 # post_test = 'coverage html'
+
 
 [build-system]
 requires = ["poetry-core"]

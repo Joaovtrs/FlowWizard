@@ -14,6 +14,7 @@ class MainUI(QMainWindow):
         self.resize(800, 600)
         self.setWindowTitle('FlowWizard')
         self.setMinimumSize(800, 600)
+        self.showMaximized()
 
         self.menu_bar = MainMenuBar(self.update_, self)
         self.setMenuBar(self.menu_bar)
