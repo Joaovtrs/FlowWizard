@@ -21,18 +21,17 @@ class Pipe:
     def statitics(self):
         return self.__str__() + f': {self.flow} l/s'
 
-    def connect_node(self, node):
-        if None in self.nodes:
-            if self.nodes[0] is None:
-                self.nodes[0] = node
-            else:
-                self.nodes[1] = node
-            return True
-        else:
-            return False
+    def connect_node(self, node, side):
+        if side in [1, 2]:
+            self.nodes[side - 1] = node
 
     def disconnect_node(self, node):
-        if self.nodes[0] == node:
-            self.nodes[0] = None
-        elif self.nodes[1] == node:
-            self.nodes[1] = None
+        if node in self.nodes:
+            pos = self.nodes.index(node)
+            self.nodes[pos] = None
+
+    def clear_conections(self):
+        for node in self.nodes:
+            if node is not None:
+                node.disconnect_pipe(self)
+        self.nodes = [None, None]

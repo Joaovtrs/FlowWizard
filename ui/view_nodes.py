@@ -69,20 +69,22 @@ class NodesTable(QTableWidget):
 
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.verticalHeader().setVisible(False)
+
+        self.cellDoubleClicked.connect(self.func_cell_clicked)
 
         self.update_()
 
     def update_(self):
         self.clear()
 
-        self.setColumnCount(5)
+        self.setColumnCount(4)
         self.setHorizontalHeaderLabels(
             [
                 'Nome',
                 'Cota (m)',
                 'Pressão (m.c.a.)',
-                'Número de Conexões',
                 'Trechos Conectados',
             ]
         )
@@ -90,20 +92,21 @@ class NodesTable(QTableWidget):
         self.setColumnWidth(1, 250)
         self.setColumnWidth(2, 250)
         self.setColumnWidth(3, 250)
-        self.setColumnWidth(4, 250)
 
         self.setRowCount(len(system.circuit.nodes))
         for i, node in enumerate(system.circuit.nodes):
             self.add_item(i, 0, str(node.name))
             self.add_item(i, 1, str(node.elevation))
             self.add_item(i, 2, str(node.pressure))
-            self.add_item(i, 3, str(node.n_connections))
-            self.add_item(i, 4, '')
+            self.add_item(i, 3, '')
 
     def add_item(self, col, line, item):
         item = QTableWidgetItem(item)
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.setItem(col, line, item)
+
+    def func_cell_clicked(self, row, column):
+        pass
 
 
 class OptionsWidget(QFrame):

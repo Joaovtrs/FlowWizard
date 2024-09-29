@@ -19,16 +19,17 @@ from PySide6.QtWidgets import (
 
 
 class Plot(FigureCanvasQTAgg):
-    def __init__(self, parent=None, width=5, height=6, dpi=100):
+    def __init__(self, parent=None, width=10, height=10, dpi=100):
         self.parent = parent
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super().__init__(figure=fig)
+
         graph = system.circuit.graph()
         if nx.is_planar(graph):
-            nx.draw_planar(system.circuit.graph(), ax=self.axes)
+            nx.draw_planar(graph, ax=self.axes, with_labels=True)
         else:
-            nx.draw(system.circuit.graph(), ax=self.axes)
+            nx.draw(graph, ax=self.axes, with_labels=True)
 
 
 class ViwerGraph(QFrame):
@@ -60,4 +61,29 @@ class ViwerGraph(QFrame):
         self.grid.addItem(self.spacer)
 
     def update_(self):
-        pass
+        self.clear_layout(self.grid)
+
+        self.lbl_title = QLabel('Grafo')
+        self.lbl_title.setAlignment(Qt.AlignHCenter)
+        self.lbl_title.setFont(QFont('Times', 20))
+
+        self.separator_title = QFrame(self)
+        self.separator_title.setFrameShape(QFrame.HLine)
+
+        self.plot = Plot(self)
+
+        self.spacer = QSpacerItem(
+            10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
+
+        self.grid.addWidget(self.lbl_title)
+        self.grid.addWidget(self.separator_title)
+        self.grid.addWidget(self.plot)
+        self.grid.addItem(self.spacer)
+
+    def clear_layout(self, layout):
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
