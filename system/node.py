@@ -4,6 +4,8 @@ class Node:
         self.elevation = 0.0
         self.pressure = 0.0
         self.pipes = []
+        self.is_consumption = False
+        self.is_supply = False
 
     def __str__(self):
         return f'Node {self.name}'

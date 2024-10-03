@@ -40,19 +40,19 @@ class MainMenuBar(QMenuBar):
         pass
 
     def pop_up(self, texto):
-        pop_up_excluir = QMessageBox(self)
-        pop_up_excluir.setWindowTitle('Aviso')
-        pop_up_excluir.setText(texto)
-        pop_up_excluir.setInformativeText(
+        pop_up = QMessageBox(self)
+        pop_up.setWindowTitle('Aviso')
+        pop_up.setText(texto)
+        pop_up.setInformativeText(
             'Todas as alterações não salvas serão perdidas'
         )
-        pop_up_excluir.setIcon(QMessageBox.Warning)
-        pop_up_excluir.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
-        pop_up_excluir.setButtonText(QMessageBox.No, 'Não')
-        pop_up_excluir.setButtonText(QMessageBox.Yes, 'Sim')
-        pop_up_excluir.setDefaultButton(QMessageBox.No)
+        pop_up.setIcon(QMessageBox.Warning)
+        pop_up.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
+        pop_up.setButtonText(QMessageBox.No, 'Não')
+        pop_up.setButtonText(QMessageBox.Yes, 'Sim')
+        pop_up.setDefaultButton(QMessageBox.No)
 
-        return pop_up_excluir.exec()
+        return pop_up.exec()
 
     def func_new_file(self):
         resp = self.pop_up('Deseja criar um novo arquivo?')

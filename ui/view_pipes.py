@@ -19,7 +19,7 @@ class ViewPipes(QFrame):
 
         self.grid = QVBoxLayout(self)
 
-        self.lbl_title = QLabel('Trechos')
+        self.lbl_title = QLabel('Trechos', self)
         self.lbl_title.setAlignment(Qt.AlignHCenter)
         self.lbl_title.setFont(QFont('Times', 20))
 

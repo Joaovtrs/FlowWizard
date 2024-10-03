@@ -11,6 +11,7 @@ class Pipe:
         self.name = name
         self.flow = 0.0
         self.nodes = [None, None]
+        self.pressure_loss = 0.0
 
     def __str__(self):
         return f'Pipe {self.name}'

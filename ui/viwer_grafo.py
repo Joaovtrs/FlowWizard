@@ -42,7 +42,7 @@ class ViwerGraph(QFrame):
 
         self.grid = QVBoxLayout(self)
 
-        self.lbl_title = QLabel('Grafo')
+        self.lbl_title = QLabel('Grafo', self)
         self.lbl_title.setAlignment(Qt.AlignHCenter)
         self.lbl_title.setFont(QFont('Times', 20))
 
@@ -63,7 +63,7 @@ class ViwerGraph(QFrame):
     def update_(self):
         self.clear_layout(self.grid)
 
-        self.lbl_title = QLabel('Grafo')
+        self.lbl_title = QLabel('Grafo', self)
         self.lbl_title.setAlignment(Qt.AlignHCenter)
         self.lbl_title.setFont(QFont('Times', 20))
 
